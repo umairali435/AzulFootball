@@ -11,7 +11,7 @@ const router=express.Router();
 //three hour   0 0 */3 * * *
 cron.schedule('* * * * *', function() {
     console.log('running a task every minute');
-    fetch('https://azulfootball.herokuapp.com/api/notificaiton/send/All',{
+    fetch('https://azulfootball.herokuapp.com/api/notificaiton/firebase',{
         'method':'POST',
         'headers':{
             'Authorization':'key='+'AAAAS-5kXmc:APA91bFOScPRSmryQWvmJ_z_87LOPV_-1D0sJTJhkrYHeQ8RqdojewZNlGbTrt5V2H88Q2UlAKcV1dap3B-fHs7ERMJ1RQe4K2YeidbfrQkcL8ew9zQjqHAOQtrZPnMcCRHFn4Vhenap',
