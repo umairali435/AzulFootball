@@ -9,7 +9,7 @@ admin.initializeApp({
 const fetch=require('node-fetch');
 const router=express.Router();
 //three hour   0 0 */3 * * *
-cron.schedule('* * * * *', function() {
+cron.schedule('0 0 */3 * * *', function() {
     console.log('running a task every minute');
     fetch('https://azulfootball.herokuapp.com/api/notificaiton/firebase',{
         'method':'POST',
