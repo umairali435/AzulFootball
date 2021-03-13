@@ -4,9 +4,9 @@ const router=express.Router();
 router.post('/send/All',(req,res)=>{
     var notification={
         'title':req.body.title,
-        'text':'subtitle',
+        'text':req.body.subtitle,
     }
-    var fcm_token=['eL2xZtJr2n46Cf_PUJIAX2:APA91bGNGVNoCsCsa3iwEeK3tLq-e8l1WgdNy4yXZXS3Pd4zXr7KOD2eXLVXnpXOw_O5bTxuk4QQte5-fdNjVq4VswhUHBeIweP0KcjqhmdNdmMSFWGNaODlxqV7DLnJpgEtIwGamJ2D'];
+    var fcm_token=[req.body.token];
     var notification_body={
         'notification':notification,
         'registration_ids':fcm_token,
