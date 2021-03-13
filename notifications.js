@@ -8,6 +8,7 @@ admin.initializeApp({
 });
 const fetch=require('node-fetch');
 const router=express.Router();
+//three hour   0 0 */3 * * *
 cron.schedule('* * * * *', function() {
     console.log('running a task every minute');
     fetch('https://azulfootball.herokuapp.com/api/notificaiton/send/All',{
@@ -22,7 +23,7 @@ router.post('/firebase',async(req,res)=>{
     const user=req.body;
     const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
-  var tokens=await admin.firestore().collection('MobileTokens').get();
+  var tokens=await admin.firestore().collection('MobileToken').get();
   admin.firestore().collection('Lueges').doc('laliga_149').collection('Date').doc(today.toISOString().substring(0,10).replace(/(^|-)0+/g, "$1")).collection('Matches').get().then(function(doc){    
 
     // for(i=2;i<10;i++){
@@ -45,7 +46,7 @@ const today = new Date(timeElapsed);
             }
         };
         tokens.docs.forEach(tokensdata=>{  
-        admin.messaging().sendToDevice(tokensdata.data()['mobileToken'], payload).then(function (response) {
+        admin.messaging().sendToDevice(tokensdata.data()['token'], payload).then(function (response) {
             console.log('success');
         }).catch(function (error) {
             console.log(error);
