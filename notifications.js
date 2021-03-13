@@ -11,6 +11,7 @@ router.post('/send/All',(req,res)=>{
         'notification':notification,
         'registration_ids':fcm_token,
     }
+    if(req.body.title!=undefined||req.body.title!=null){
     fetch('https://fcm.googleapis.com/fcm/send',{
         'method':'POST',
         'headers':{
@@ -23,5 +24,10 @@ router.post('/send/All',(req,res)=>{
     }).catch((err)=>{
         res.status(500).send(err);
     });
+}else{
+    res.status(200).json({
+        "message":"title is empty",
+    })
+}
 });
 module.exports=router
